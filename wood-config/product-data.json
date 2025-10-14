@@ -1,0 +1,58 @@
+{
+  "attributes": {
+    "dimensions": {
+      "metric": true,
+      "unit": "cm",
+      "min_width": 30,
+      "max_width": 250,
+      "min_depth": 30,
+      "max_depth": 100
+    },
+    "wood_type": [
+      {
+        "id": "oak",
+        "price_modifier": 1.0,
+        "image": "/wood-countertop/images/oak.jpg"
+      },
+      {
+        "id": "walnut",
+        "price_modifier": 1.5,
+        "image": "/wood-countertop/images/walnut.jpg"
+      },
+      {
+        "id": "maple",
+        "price_modifier": 1.2,
+        "image": "/wood-countertop/images/maple.jpg"
+      }
+    ],
+    "edge_profile": [
+      {
+        "id": "straight",
+        "price_modifier": 0.0,
+        "image": "/wood-countertop/images/edge-straight.jpg"
+      },
+      {
+        "id": "rounded",
+        "price_modifier": 0.1,
+        "image": "/wood-countertop/images/edge-rounded.jpg"
+      },
+      {
+        "id": "beveled",
+        "price_modifier": 0.15,
+        "image": "/wood-countertop/images/edge-beveled.jpg"
+      }
+    ],
+    "usage": [
+      {
+        "id": "kitchen",
+        "price_modifier": 0.0,
+        "image": "/wood-countertop/images/usage-kitchen.jpg"
+      },
+      {
+        "id": "bathroom",
+        "price_modifier": 0.05,
+        "image": "/wood-countertop/images/usage-bathroom.jpg"
+      }
+    ]
+  }
+}
