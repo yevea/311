@@ -1,0 +1,19 @@
+{
+  "page_title": "Encimeras de madera a medida",
+  "product_heading": "Diseña tu encimera ideal",
+  "config_dimensions": "Dimensiones (en cm)",
+  "config_width": "Ancho",
+  "config_depth": "Profundidad",
+  "config_wood_type": "Tipo de madera",
+  "option_oak": "Roble",
+  "option_walnut": "Nogal",
+  "option_maple": "Arce",
+  "config_edges": "Perfil de borde",
+  "config_usage": "Uso",
+  "usage_kitchen": "Cocina",
+  "usage_bathroom": "Baño",
+  "button_checkout": "Comprar",
+  "currency": "€",
+  "price_per_sq_cm": 0.05,
+  "thank_you_message": "¡Gracias por tu pedido! Hemos recibido tu solicitud y nos pondremos en contacto contigo en breve."
+}
