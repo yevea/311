@@ -1,0 +1,19 @@
+{
+  "page_title": "Custom Wood Worktops",
+  "product_heading": "Build Your Dream Worktop",
+  "config_dimensions": "Dimensions (in cm)",
+  "config_width": "Width",
+  "config_depth": "Depth",
+  "config_wood_type": "Wood Type",
+  "option_oak": "Oak",
+  "option_walnut": "Walnut",
+  "option_maple": "Maple",
+  "config_edges": "Edge Profile",
+  "config_usage": "Usage",
+  "usage_kitchen": "Kitchen",
+  "usage_bathroom": "Bathroom",
+  "button_checkout": "Checkout",
+  "currency": "£",
+  "price_per_sq_cm": 0.05,
+  "thank_you_message": "Thank you for your order! We have received your request and will contact you shortly."
+}
