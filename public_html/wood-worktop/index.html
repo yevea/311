@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FFFFFF">
+    <title>Encimeras de madera</title>
+    <link rel="stylesheet" href="wood-style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+    <header>
+        <h1 id="product-heading"></h1>
+    </header>
+
+    <main class="container">
+        <section class="configurator">
+            <div class="product-image-display">
+                <!-- Image will be updated by JavaScript -->
+                <img id="main-product-image" src="" alt="Custom wood worktop">
+            </div>
+
+            <div class="options-panel">
+                <div class="dimensions-group">
+                    <h2 id="config-dimensions"></h2>
+                    <div class="input-group">
+                        <label for="config-width" id="label-width"></label>
+                        <input type="number" id="config-width" min="30" max="250" value="100">
+                        <span>cm</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="config-depth" id="label-depth"></label>
+                        <input type="number" id="config-depth" min="30" max="100" value="60">
+                        <span>cm</span>
+                    </div>
+                </div>
+
+                <div class="attribute-group" id="wood-type-options">
+                    <h2 id="config-wood-type"></h2>
+                    <!-- Wood type options will be generated here by script.js -->
+                </div>
+
+                <div class="attribute-group" id="edge-profile-options">
+                    <h2 id="config-edges"></h2>
+                    <!-- Edge profile options will be generated here by script.js -->
+                </div>
+
+                <div class="attribute-group" id="usage-options">
+                    <h2 id="config-usage"></h2>
+                    <!-- Usage options will be generated here by script.js -->
+                </div>
+
+                <div class="price-summary">
+                    <span>Total:</span>
+                    <span id="total-price" class="price">0,00 €</span>
+                </div>
+
+                <button id="checkout-button" class="checkout-button"></button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Language selector -->
+        <div class="lang-selector">
+            <a href="/wood-worktop/en/wood-worktop/">EN</a> |
+            <a href="/wood-worktop/de/holzplatte/">DE</a> |
+            <a href="/wood-worktop/fr/plan-bois/">FR</a> |
+            <a href="/wood-worktop/es/madera/">ES</a>
+        </div>
+    </footer>
+
+    <!-- This script is where the PHP router injects language/slug -->
+    <script>
+        // Placeholder for the script injected by index.php
+    </script>
+    
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(reg => console.log('SW Registered!', reg))
+                    .catch(err => console.log('SW Registration Failed:', err));
+            });
+        }
+    </script>
+</body>
+</html>
 
