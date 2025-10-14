@@ -1,0 +1,16 @@
+RewriteEngine On
+RewriteBase /wood-worktop/
+
+# Redirect the base URL of the PWA to the Spanish version by default
+RewriteRule ^$ es/madera/ [R=301,L]
+
+# Route requests for language-specific URLs to the PHP router.
+RewriteRule ^([a-z]{2})/([^/]+)/?$ language_pages/index.php [L,QSA]
+
+# Prevent directory listing and direct access to sensitive folders.
+Options -Indexes
+
+# Fallback for assets not matching any RewriteRule
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.html [L]
