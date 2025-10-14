@@ -1,0 +1,19 @@
+{
+  "page_title": "Plans de travail en bois sur mesure",
+  "product_heading": "Créez le plan de travail de vos rêves",
+  "config_dimensions": "Dimensions (en cm)",
+  "config_width": "Largeur",
+  "config_depth": "Profondeur",
+  "config_wood_type": "Type de bois",
+  "option_oak": "Chêne",
+  "option_walnut": "Noyer",
+  "option_maple": "Érable",
+  "config_edges": "Profil de bordure",
+  "config_usage": "Utilisation",
+  "usage_kitchen": "Cuisine",
+  "usage_bathroom": "Salle de bain",
+  "button_checkout": "Commander",
+  "currency": "€",
+  "price_per_sq_cm": 0.05,
+  "thank_you_message": "Merci pour votre commande ! Nous avons bien reçu votre demande et vous contacterons sous peu."
+}
