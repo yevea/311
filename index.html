@@ -1,91 +1,144 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#FFFFFF">
-    <title>Encimeras de madera</title>
-    <link rel="stylesheet" href="wood-style.css">
-    <link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olive Wood Countertop Configurator</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 2rem; background: #fafafa; color: #222; }
+    section { background: white; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+    h2 { margin-bottom: 1rem; }
+    .input-group { margin-bottom: 0.5rem; }
+    button { padding: 0.5rem 1rem; border: none; border-radius: 0.5rem; background: #3b7c3a; color: white; cursor: pointer; }
+    button:hover { background: #316b31; }
+    .price { font-size: 1.2rem; font-weight: bold; margin-top: 0.5rem; }
+    .cart { border-top: 1px solid #ddd; padding-top: 1rem; }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1 id="product-heading"></h1>
-    </header>
+<h1>Custom Olive Wood Countertop</h1>
 
-    <main class="container">
-        <section class="configurator">
-            <div class="product-image-display">
-                <!-- Image will be updated by JavaScript -->
-                <img id="main-product-image" src="" alt="Custom wood worktop">
-            </div>
+<section id="dimensions">
+  <h2>1. Dimensions</h2>
+  <div class="input-group">
+    <label>Thickness (cm):</label>
+    <select id="thickness">
+      <option value="3">3 cm</option>
+      <option value="5">5 cm</option>
+      <option value="7">7 cm</option>
+    </select>
+  </div>
+  <div class="input-group">
+    <label>Length (cm):</label>
+    <input type="number" id="length" min="50" max="300" value="100">
+  </div>
+  <div class="input-group">
+    <label>Width (cm):</label>
+    <input type="number" id="width" min="20" max="100" value="50">
+  </div>
+  <div class="price">Estimated Price: <span id="price">0.00</span> €</div>
+</section>
 
-            <div class="options-panel">
-                <div class="dimensions-group">
-                    <h2 id="config-dimensions"></h2>
-                    <div class="input-group">
-                        <label for="config-width" id="label-width"></label>
-                        <input type="number" id="config-width" min="30" max="250" value="100">
-                        <span>cm</span>
-                    </div>
-                    <div class="input-group">
-                        <label for="config-depth" id="label-depth"></label>
-                        <input type="number" id="config-depth" min="30" max="100" value="60">
-                        <span>cm</span>
-                    </div>
-                </div>
+<section id="edges">
+  <h2>2. Edges</h2>
+  <p>Select edge type for each side:</p>
+  <div class="input-group">Back Edge: 
+    <select id="backEdge">
+      <option value="straight">Straight</option>
+      <option value="live">Live Edge</option>
+    </select>
+  </div>
+  <div class="input-group">Front Edge: 
+    <select id="frontEdge">
+      <option value="straight">Straight</option>
+      <option value="live">Live Edge</option>
+    </select>
+  </div>
+  <div class="input-group">Left Edge: 
+    <select id="leftEdge">
+      <option value="straight">Straight</option>
+      <option value="live">Live Edge</option>
+    </select>
+  </div>
+  <div class="input-group">Right Edge: 
+    <select id="rightEdge">
+      <option value="straight">Straight</option>
+      <option value="live">Live Edge</option>
+    </select>
+  </div>
+</section>
 
-                <div class="attribute-group" id="wood-type-options">
-                    <h2 id="config-wood-type"></h2>
-                    <!-- Wood type options will be generated here by script.js -->
-                </div>
+<section id="usage">
+  <h2>3. Usage</h2>
+  <select id="usageType">
+    <option value="table">Tabletop</option>
+    <option value="kitchen">Kitchen Countertop</option>
+    <option value="island">Kitchen Island</option>
+    <option value="bathroom">Bathroom Countertop</option>
+    <option value="shelf">Shelf</option>
+    <option value="other">Other</option>
+  </select>
+</section>
 
-                <div class="attribute-group" id="edge-profile-options">
-                    <h2 id="config-edges"></h2>
-                    <!-- Edge profile options will be generated here by script.js -->
-                </div>
+<section id="cart">
+  <h2>4. Cart</h2>
+  <button id="addToCart">➕ Add to Cart</button>
+  <div class="cart">
+    <p id="cartList">Your cart is empty.</p>
+  </div>
+</section>
 
-                <div class="attribute-group" id="usage-options">
-                    <h2 id="config-usage"></h2>
-                    <!-- Usage options will be generated here by script.js -->
-                </div>
+<section id="payment">
+  <h2>5. Payment</h2>
+  <button id="checkout">Complete Order →</button>
+  <p><small>Secure Payment • Delivery in 3 Weeks</small></p>
+</section>
 
-                <div class="price-summary">
-                    <span>Total:</span>
-                    <span id="total-price" class="price">0,00 €</span>
-                </div>
+<script>
+  const priceElement = document.getElementById("price");
+  const cartList = document.getElementById("cartList");
+  let cart = [];
 
-                <button id="checkout-button" class="checkout-button"></button>
-            </div>
-        </section>
-    </main>
+  function calculatePrice() {
+    const thickness = parseInt(document.getElementById("thickness").value);
+    const length = parseInt(document.getElementById("length").value);
+    const width = parseInt(document.getElementById("width").value);
+    let area = (length * width) / 10000; // m²
+    let base = area * thickness * 50; // arbitrary base factor
+    priceElement.textContent = base.toFixed(2);
+    return base;
+  }
 
-    <footer>
-        <!-- Language selector -->
-        <div class="lang-selector">
-            <a href="/wood-worktop/en/wood-worktop/">EN</a> |
-            <a href="/wood-worktop/de/holzplatte/">DE</a> |
-            <a href="/wood-worktop/fr/plan-bois/">FR</a> |
-            <a href="/wood-worktop/es/madera/">ES</a>
-        </div>
-    </footer>
+  document.querySelectorAll("select, input").forEach(el => el.addEventListener("input", calculatePrice));
+  calculatePrice();
 
-    <!-- This script is where the PHP router injects language/slug -->
-    <script>
-        // Placeholder for the script injected by index.php
-    </script>
-    
-    <script src="script.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('service-worker.js')
-                    .then(reg => console.log('SW Registered!', reg))
-                    .catch(err => console.log('SW Registration Failed:', err));
-            });
-        }
-    </script>
+  document.getElementById("addToCart").addEventListener("click", () => {
+    const price = calculatePrice();
+    const usage = document.getElementById("usageType").value;
+    const item = { price, usage };
+    cart.push(item);
+    renderCart();
+  });
+
+  function renderCart() {
+    if (cart.length === 0) {
+      cartList.textContent = "Your cart is empty.";
+      return;
+    }
+    cartList.innerHTML = cart.map((item, i) =>
+      `<div>Item ${i+1}: ${item.usage} – ${item.price.toFixed(2)} €</div>`
+    ).join("");
+  }
+
+  document.getElementById("checkout").addEventListener("click", () => {
+    if (cart.length === 0) {
+      alert("Please add an item to the cart first!");
+    } else {
+      alert("Proceeding to payment (mock)...");
+    }
+  });
+</script>
+
 </body>
 </html>
-
